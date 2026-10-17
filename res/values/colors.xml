@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#F5F2EC</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_line">#E6E0D6</color>
+    <color name="text">#1D1B19</color>
+    <color name="subtext">#6B645C</color>
+    <color name="accent">#1F6F6B</color>
+    <color name="on_accent">#FFFFFF</color>
+    <color name="bar_track">#E9E4DC</color>
+    <color name="amber">#B45309</color>
+    <color name="red">#C62828</color>
+    <color name="red_surface">#FDECEC</color>
+    <color name="red_line">#F0B4B4</color>
+    <color name="block_bg">#101615</color>
+    <!-- logo colours: the same in light and dark -->
+    <color name="logo_bg_top">#21575C</color>
+    <color name="logo_bg_bottom">#0F2E31</color>
+    <color name="logo_lock">#F6F1E9</color>
+    <color name="logo_sand">#FF7A59</color>
+</resources>

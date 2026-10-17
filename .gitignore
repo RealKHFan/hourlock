@@ -1,0 +1,15 @@
+# Build output
+build/
+dist/
+
+# Signing keys: never commit these. Anyone with the key could publish
+# updates that install over people's copies of the app.
+signing/
+*.keystore
+*.jks
+*.p12
+keystore-password.txt
+
+__pycache__/
+*.pyc
+.DS_Store

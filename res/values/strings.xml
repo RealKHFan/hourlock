@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hourlock</string>
+    <string name="service_label">Hourlock blocker</string>
+    <string name="service_description">Lets Hourlock block, time-limit or warn about the apps you picked. It only checks which app is on screen (the app\'s package name). It never reads or saves what you see or type, and Hourlock has no internet access at all.</string>
+</resources>
