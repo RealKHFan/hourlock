@@ -239,9 +239,13 @@ public final class EngineTest {
         Rule blkFastFromOff = rule(MODE_BLOCK); blkFastFromOff.unlockWaitSec = 5;
         check(!isLoosening(off, blkFastFromOff), "loosen: off -> blocked is instant even with short wait");
 
-        Rule warnBig = rule(MODE_WARN); warnBig.warnMin = 30;
-        Rule limBig = rule(MODE_LIMIT); limBig.limitMin = 120;
-        check(!isLoosening(warnBig, limBig), "loosen: warn -> limit is stricter");
+        Rule warn30 = rule(MODE_WARN); warn30.warnMin = 30;
+        Rule lim120 = rule(MODE_LIMIT); lim120.limitMin = 120;
+        Rule lim30 = rule(MODE_LIMIT); lim30.limitMin = 30;
+        Rule lim20b = rule(MODE_LIMIT); lim20b.limitMin = 20;
+        check(isLoosening(warn30, lim120), "loosen: warn 30 -> limit 120 waits (more free minutes, no popups)");
+        check(!isLoosening(warn30, lim30), "loosen: warn 30 -> limit 30 is instant");
+        check(!isLoosening(warn30, lim20b), "loosen: warn 30 -> limit 20 is instant");
 
         check(isLoosening(lim, null), "loosen: removing a limited app waits");
         check(!isLoosening(off, null), "loosen: removing an unrestricted app is instant");

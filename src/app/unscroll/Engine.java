@@ -224,6 +224,8 @@ public final class Engine {
             if (neu.mode == MODE_LIMIT && neu.limitMin > old.limitMin) return true;
             if (neu.mode == MODE_WARN && neu.warnMin > old.warnMin) return true;
         }
+        // Warn 30 -> Limit 1440 would give more free minutes and drop the popups.
+        if (old.mode == MODE_WARN && neu.mode == MODE_LIMIT && neu.limitMin > old.warnMin) return true;
         boolean oldHadUnlocks = old.mode == MODE_LIMIT || old.mode == MODE_BLOCK;
         boolean newHasUnlocks = neu.mode == MODE_LIMIT || neu.mode == MODE_BLOCK;
         if (!oldHadUnlocks || !newHasUnlocks) return false;

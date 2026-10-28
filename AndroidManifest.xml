@@ -24,8 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hourlock">
 
+        <!-- configChanges: rotating must not cancel the 3-minute wait or close the edit box. -->
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
@@ -37,6 +39,7 @@
         <!-- The block screen: its own task, never in recents, gone once you leave it. -->
         <activity
             android:name=".BlockActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
             android:excludeFromRecents="true"
             android:exported="false"
             android:launchMode="singleTask"

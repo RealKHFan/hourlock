@@ -20,28 +20,28 @@
                 android:id="@+id/m_off"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="44dp"
+                android:minHeight="48dp"
                 android:text="Not restricted" />
 
             <RadioButton
                 android:id="@+id/m_warn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="44dp"
+                android:minHeight="48dp"
                 android:text="Warn me (never blocks)" />
 
             <RadioButton
                 android:id="@+id/m_limit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="44dp"
+                android:minHeight="48dp"
                 android:text="Daily time limit" />
 
             <RadioButton
                 android:id="@+id/m_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="44dp"
+                android:minHeight="48dp"
                 android:text="Always blocked" />
         </RadioGroup>
 
@@ -66,6 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:labelFor="@+id/warn_min"
                 android:text="Warn after"
                 android:textSize="15sp" />
 
@@ -98,6 +99,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:labelFor="@+id/limit_min"
                 android:text="Daily limit"
                 android:textSize="15sp" />
 
@@ -130,6 +132,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:labelFor="@+id/unlock_min"
                 android:text="Each unlock gives"
                 android:textSize="15sp" />
 
@@ -162,6 +165,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:labelFor="@+id/wait_sec"
                 android:text="Wait before unlocking"
                 android:textSize="15sp" />
 

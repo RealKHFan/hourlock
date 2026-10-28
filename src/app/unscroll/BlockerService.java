@@ -51,7 +51,6 @@ public class BlockerService extends AccessibilityService {
     private WarnOverlay overlay;
     private long lastAccount;
     private long sessionDay;
-    private boolean userActive = true;
     private boolean scanPending;
     private long scanDueAt;
     private boolean receiverOn;
@@ -152,9 +151,8 @@ public class BlockerService extends AccessibilityService {
         long now = SystemClock.elapsedRealtime();
         account(now); // time since last check belongs to the previous set of apps
 
-        userActive = isUserActive();
         windowNotReady = false;
-        Set<String> nowVisible = userActive ? visibleWatchedApps() : Collections.<String>emptySet();
+        Set<String> nowVisible = isUserActive() ? visibleWatchedApps() : Collections.<String>emptySet();
 
         long today = Store.today();
         if (today != sessionDay) { // midnight: counters reset, start fresh sessions

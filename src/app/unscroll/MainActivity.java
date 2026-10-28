@@ -248,6 +248,7 @@ public class MainActivity extends Activity {
         }
 
         row.unlock.setVisibility(blocked && installed ? View.VISIBLE : View.GONE);
+        row.unlock.setContentDescription("Unlock " + row.name.getText());
     }
 
     private void refreshStatus(int count) {

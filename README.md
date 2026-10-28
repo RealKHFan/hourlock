@@ -3,7 +3,7 @@
 <h1 align="center">Hourlock</h1>
 
 <p align="center">A free, open-source app blocker for Android.<br>
-No subscription, no account, no ads, no trackers, and <b>no permissions at all</b> (not even internet).</p>
+No Google services, no subscription, no account, no ads, no trackers, and <b>no permissions at all</b> (not even internet).</p>
 
 <p align="center">Made by <a href="https://github.com/RealKHFan">RKF</a> with help from Claude (Anthropic).</p>
 
@@ -57,6 +57,17 @@ removing an app. All counters reset at midnight.
    it can see your screen; Hourlock only checks which app is open.
 5. Tap each app and pick its mode.
 
+### Check that your APK is genuine
+
+Every official Hourlock APK is signed with this certificate (SHA-256):
+
+```
+7D:90:96:F4:72:5B:73:D1:3D:FB:BC:FE:92:1D:5D:46:C9:0A:BC:67:06:F1:19:2C:5F:48:8C:07:18:D7:CA:49
+```
+
+Check it with an app like AppVerifier, or with
+`apksigner verify --print-certs Hourlock-x.y.apk`. If it doesn't match, don't install it.
+
 ### Notes for some phones
 
 - **Battery savers.** Xiaomi/Redmi/POCO (HyperOS/MIUI), Huawei, OnePlus and
@@ -84,17 +95,17 @@ access, and keeps everything in its own private storage on your phone.
   is a strong speed bump, not a jail.
 - Websites in the browser (instagram.com etc.) aren't blocked.
 - Apps in picture-in-picture mode are ignored, because going home can't close them.
-- This is a young project. The rules logic is covered by 93 automated tests,
+- This is a young project. The rules logic is covered by 95 automated tests,
   but please report anything odd on your phone in [Issues](../../issues).
 
 ## Build it yourself
 
 No Gradle and no Google libraries: just a JDK (17+) and three pieces of the
-Android SDK (`platforms;android-33`, `build-tools;34.0.0` and its `aapt2`).
+Android SDK (`platforms;android-33` and `build-tools;36.0.0`).
 
 ```sh
 ANDROID_JAR=$ANDROID_HOME/platforms/android-33/android.jar \
-BUILD_TOOLS=$ANDROID_HOME/build-tools/34.0.0 \
+BUILD_TOOLS=$ANDROID_HOME/build-tools/36.0.0 \
 ./build.sh
 ```
 
@@ -102,9 +113,9 @@ BUILD_TOOLS=$ANDROID_HOME/build-tools/34.0.0 \
 `build/Hourlock.apk`. Without the project key it signs with a throwaway local
 key, which works fine but can't update an install of an official release.
 
-Every push is built by [GitHub Actions](.github/workflows/build.yml). Pushing
-a `v*` tag publishes a release signed with the project key, which is stored
-only in the repository secrets `KEYSTORE_BASE64` and `KEYSTORE_PASSWORD`.
+Every push is tested and built by [GitHub Actions](.github/workflows/build.yml).
+Releases are signed on the maintainer's own computer and uploaded by hand,
+so the signing key never touches GitHub.
 
 ### Code tour
 

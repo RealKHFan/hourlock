@@ -4,7 +4,7 @@
 #
 # Needs a JDK (17 or newer) and, from the Android SDK:
 #   ANDROID_JAR  path to platforms/android-33/android.jar
-#   BUILD_TOOLS  path to build-tools/34.x (has zipalign, lib/d8.jar, lib/apksigner.jar)
+#   BUILD_TOOLS  path to build-tools/36.x (has aapt2, zipalign, lib/d8.jar, lib/apksigner.jar)
 #   AAPT2        path to aapt2 (defaults to $BUILD_TOOLS/aapt2)
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -30,8 +30,8 @@ if [ ! -f "$KEYSTORE" ]; then
     fi
 fi
 
-VERSION_CODE=3
-VERSION_NAME=1.2
+VERSION_CODE=4
+VERSION_NAME=1.3
 OUT=build/app
 rm -rf "$OUT" && mkdir -p "$OUT/gen" "$OUT/classes" "$OUT/dex" build/test
 
@@ -54,7 +54,6 @@ javac -source 8 -target 8 -encoding UTF-8 -bootclasspath "$ANDROID_JAR" \
     -d "$OUT/classes" $(find src "$OUT/gen" -name '*.java')
 
 echo "4/6 Dex"
-python3 tools/strip_method_params.py "$OUT/classes"   # javac 21 + D8 8.2 workaround
 java -cp "$BUILD_TOOLS/lib/d8.jar" com.android.tools.r8.D8 \
     --release --min-api 29 --lib "$ANDROID_JAR" \
     --output "$OUT/dex" $(find "$OUT/classes" -name '*.class')

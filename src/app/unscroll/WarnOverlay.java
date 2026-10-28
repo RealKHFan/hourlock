@@ -28,6 +28,8 @@ final class WarnOverlay {
             0xFFB91C1C, // red
             0xFF8F1414, // dark red
     };
+    /** How many popups get their own, lower spot. */
+    private static final int STEPS = 8;
 
     private final BlockerService svc;
     private final WindowManager wm;
@@ -56,7 +58,9 @@ final class WarnOverlay {
                         | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 PixelFormat.TRANSLUCENT);
         lp.gravity = Gravity.CENTER;
-        int step = Math.min(list.size(), 8);
+        // From the 9th popup on they share the lowest spot: replace that card instead of hiding more under it.
+        if (list.size() > STEPS) remove(list.remove(list.size() - 1));
+        int step = Math.min(list.size(), STEPS);
         lp.y = dp(-90 + step * 28);   // each popup a bit lower: they visibly pile up
 
         try {
@@ -164,6 +168,7 @@ final class WarnOverlay {
     private TextView button(String s, boolean filled, int color) {
         TextView b = text(s, 15, true);
         b.setPadding(dp(18), dp(10), dp(18), dp(10));
+        b.setMinHeight(dp(48));
         b.setGravity(Gravity.CENTER);
         GradientDrawable d = new GradientDrawable();
         d.setCornerRadius(dp(22));

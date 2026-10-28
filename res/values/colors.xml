@@ -13,9 +13,4 @@
     <color name="red_surface">#FDECEC</color>
     <color name="red_line">#F0B4B4</color>
     <color name="block_bg">#101615</color>
-    <!-- logo colours: the same in light and dark -->
-    <color name="logo_bg_top">#21575C</color>
-    <color name="logo_bg_bottom">#0F2E31</color>
-    <color name="logo_lock">#F6F1E9</color>
-    <color name="logo_sand">#FF7A59</color>
 </resources>
