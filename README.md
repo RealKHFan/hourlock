@@ -11,6 +11,14 @@ Hourlock lets you block apps, give them a daily time limit, or get nagged
 when you overdo it. It was made on GrapheneOS and works on any Android 10+
 phone, with or without Google services. The whole app is about 60 KB.
 
+<p align="center">
+<img src="docs/screenshots/home.png" width="200" alt="Main screen: Instagram on a daily limit, TikTok blocked, Discord past its warning, Reddit red after 3 unlocks">
+<img src="docs/screenshots/warn.png" width="200" alt="Warning popups piling up over an app">
+<img src="docs/screenshots/blocked.png" width="200" alt="The blocked notice, with only a Close button">
+<img src="docs/screenshots/unlock.png" width="200" alt="The unlock screen in red, counting down before Unlock works">
+</p>
+<p align="center"><sub>Sample data. On your phone you'll see the real app icons.</sub></p>
+
 ## Modes
 
 Every app you add gets one of four modes:
